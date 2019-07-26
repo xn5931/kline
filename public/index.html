@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <!-- import CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+
+  <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js"></script>
+  <!-- import Vue before Element -->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <!-- import JavaScript -->
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <!-- Axios -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+  <style type="text/css">
+    .tab-pane{
+      width: 300px;
+      height: 100%;
+    }
+    #ex-border-card{
+      width: 330px;
+      height: 576px;
+    }
+    #tradingview-widget-container-id-type{
+
+       position:absolute;
+        right:10px;
+        top:10px;
+    }
+    #app{
+     
+    }
+  </style>
+
+</head>
+<body>
+  <!-- 导航 start-->
+  <div id="app">
+  <template>
+
+    <el-tabs type="border-card" id="ex-border-card">
+
+      <el-tab-pane label="huobi" id="huobi-tab-pane" class="tab-pane">
+
+        <el-tabs type="border-card">
+
+          <el-tab-pane label="usdt">
+
+
+           
+    
+
+
+
+          <div>usdtx</div>
+
+
+
+          </el-tab-pane>
+
+          <el-tab-pane label="btc">btc</el-tab-pane>
+
+          <el-tab-pane label="eth">eth</el-tab-pane>
+
+          <el-tab-pane label="ht">ht</el-tab-pane>
+
+        </el-tabs>
+
+      </el-tab-pane>
+
+      <el-tab-pane label="binance"id="binance-tab-pane" class="tab-pane">
+
+        <el-tabs type="border-card">
+
+          <el-tab-pane label="usdt">usdt</el-tab-pane>
+
+          <el-tab-pane label="btc">btc</el-tab-pane>
+
+          <el-tab-pane label="eth">eth</el-tab-pane>
+
+          <el-tab-pane label="bnb">bnb</el-tab-pane>
+
+        </el-tabs>
+
+      </el-tab-pane>
+
+      <el-tab-pane label="okex">
+
+        <el-tabs type="border-card" id="okex-tab-pane" class="tab-pane">
+
+          <el-tab-pane label="usdt">usdt</el-tab-pane>
+
+          <el-tab-pane label="btc">btc</el-tab-pane>
+
+          <el-tab-pane label="eth">eth</el-tab-pane>
+
+          <el-tab-pane label="okb">okb</el-tab-pane>
+
+        </el-tabs>
+      </el-tab-pane>
+
+      <el-tab-pane label="gata" id="gata-tab-pane" class="tab-pane">
+
+        <el-tabs type="border-card">
+
+          <el-tab-pane label="usdt">usdt</el-tab-pane>
+
+          <el-tab-pane label="btc">btc</el-tab-pane>
+
+          <el-tab-pane label="eth">eth</el-tab-pane>
+
+          <el-tab-pane label="gt">gt</el-tab-pane>
+
+        </el-tabs>
+
+      </el-tab-pane>
+
+    </el-tabs>
+
+  
+
+  </template>
+
+  </div>
+  <!-- 导航 end-->
+
+
+  <!-- k线 start-->
+  <div class="tradingview-widget-container" id="tradingview-widget-container-id-type">
+
+    <div id="tradingview_80bfc"></div>
+
+    <div class="tradingview-widget-copyright"><span class="blue-text">BTCUSDT</span></a></div>
+
+  </div>
+  <!-- k线 end-->
+
+
+
+</body>
+
+<script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+
+<script>
+
+
+
+
+
+    
+
+// 获取火币所有交易对行情
+  axios.get('http://localhost:8080/api/kline/transactionPair/list?ex=huobi')
+      .then(function (response) {
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+
+
+    //标签默认首选页面  
+    var Main = {
+      data() {
+        return {
+          tabPosition: 'top'
+        };
+      }
+    };
+
+  var Ctor = Vue.extend(Main)
+
+  new Ctor().$mount('#app')
+ 
+  // k线币种参数
+  var container_id = "";
+
+  var symbol = "";
+
+  new TradingView.widget(
+    {
+      "width": 1050,
+      "height": 610,
+      "symbol": "HUOBI:BTCUSDT",
+      "timezone": "exchange",
+      "theme": "Light",
+      "style": "1",
+      "locale": "zh_CN",
+      "toolbar_bg": "#f1f3f6",
+      "enable_publishing": false,
+      "withdateranges": true,
+      "range": "ytd",
+      "hide_side_toolbar": false,
+      "allow_symbol_change": true,
+      "details": true,
+      "show_popup_button": true,
+      "popup_width": "1000",
+      "popup_height": "650",
+      "no_referral_id": true,
+      "container_id": "tradingview_80bfc"
+    }
+    );
+
+// https://api.huobi.br.com/market/tickers
+  </script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
