@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/models/tests.js"],"names":["tests"],"mappings":";;;;;AAAA;AACA,IAAMA,QAAQ,EAAd;kBACeA,K","file":"tests.js","sourcesContent":["// our example model is just an Array\nconst tests = [];\nexport default tests;\n"]}

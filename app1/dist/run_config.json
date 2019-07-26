@@ -1,0 +1,5 @@
+{
+	"req_kline_count": 10,//每次请求k线获得的数据条数
+	"bodyLimit": "100kb",
+	"corsHeaders": "d"
+}
